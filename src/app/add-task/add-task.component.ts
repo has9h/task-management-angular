@@ -20,21 +20,30 @@ export class AddTaskComponent implements OnInit {
 
   public saveTask() : void{
     let formData = this.taskForm.value;
-    formData.status = parseInt(formData.status);
+    // formData.status = parseInt(formData.status);
+    console.log(formData.status);
     
     // Subscribe to get value
     // result returns Id of item
     this.service.addTask(formData).subscribe(result => {
       alert(`New task added with ID: ${result}`);
-      this.route.navigateByUrl(`/tasks`);
+      this.route.navigateByUrl(`/`);
     });
+  }
+
+  public taskSliderChangeHandler(event: any){
+    console.log(event.target.value)
+  }
+
+  public taskRadioChangeHandler(event: any){
+    console.log(event.target.value);
   }
 
   private init() : void {
     this.taskForm = this.formBuilder.group({
       title: [],
       description: [],
-      status: 1,
+      status: [],
       progress: [],
     });
   }

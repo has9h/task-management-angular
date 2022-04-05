@@ -27,10 +27,18 @@ export class EditTaskComponent implements OnInit {
     
     this.service.putTask(formData, this.id).subscribe(result => {
       alert(`Task with ID ${result} has been edited`);
-      this.route.navigateByUrl(`/tasks`);
+      this.route.navigateByUrl(`/`);
     });  
   }
   
+  public radioChangeHandler(event: any){
+    console.log(event.target.value);
+  }
+
+  public sliderChangeHandler(event: any){
+    console.log(event.target.value)
+  }
+
   public getTaskById() : void {
     this.service.getTaskById(this.id).subscribe(result => {
       this.data = result;
@@ -39,10 +47,11 @@ export class EditTaskComponent implements OnInit {
   }
   
   private init() : void {
+    console.log(this.data);
     this.taskForm = this.formBuilder.group({
       title: this.data.title,
       description: this.data.description,
-      status: 1,
+      status: this.data.status,
       progress: this.data.progress,
     });
   }
