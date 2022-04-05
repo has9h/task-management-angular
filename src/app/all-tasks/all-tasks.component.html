@@ -1,0 +1,29 @@
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col">Progress</th>
+            <th scope="col">Date Updated</th>
+            <th scope="col">Date Created</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let task of tasks; let indexOfelement=index;">
+            <th scope="row">{{ indexOfelement + 1 }}</th>
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.status }}</td>
+            <td>{{ task.progress }}</td>
+            <td>{{ task.dateUpdated }}</td>
+            <td>{{ task.dateCreated }}</td>
+            <td><button type="button" class="btn btn-outline-primary" (click)="toEdit(task.id)">Edit</button></td>
+            <td><button type="button" class="btn btn-outline-danger" (click)="toDelete(task.id)">Delete</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
